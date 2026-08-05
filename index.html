@@ -1,0 +1,620 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Beyond the Wall — Project Presentation</title>
+  <meta name="description" content="Beyond the Wall: Urban Canvas & Court Hub — Interdisciplinary Digital Platform.">
+
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/theme/black.css" id="theme">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --steel:       #5b7a9d;
+      --steel-light: #8aaac4;
+      --steel-pale:  #b4cde0;
+      --silver:      #9ea7b3;
+      --off-white:   #e8eaed;
+      --warm-white:  #f4f4f6;
+      --bg:          #101218;
+      --bg-surface:  #171b24;
+      --bg-card:     #1c2130;
+      --border:      #2a3040;
+      --text-1:      #dcdfe4;
+      --text-2:      #8d95a3;
+      --text-3:      #5c6370;
+    }
+
+    .reveal-viewport {
+      background: var(--bg);
+    }
+
+    .reveal {
+      font-family: 'Inter', -apple-system, sans-serif;
+      color: var(--text-1);
+    }
+
+    .reveal h1, .reveal h2, .reveal h3, .reveal h4 {
+      font-family: 'Inter', sans-serif;
+      text-transform: none;
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      color: var(--off-white);
+    }
+
+    .reveal h1 { font-size: 1.9em; line-height: 1.1; }
+    .reveal h2 { font-size: 1.15em; line-height: 1.2; }
+    .reveal h3 { font-size: 0.78em; line-height: 1.3; }
+
+    .reveal p  { font-size: 0.52em; line-height: 1.55; color: var(--text-2); }
+    .reveal li { font-size: 0.52em; line-height: 1.55; color: var(--text-2); }
+    .reveal small { font-size: 0.42em; color: var(--text-3); }
+
+    .reveal a { color: var(--steel-light); text-decoration: none; }
+    .reveal a:hover { color: var(--steel-pale); text-decoration: underline; }
+
+    .reveal .slides section { text-align: left; }
+
+    /* ---- accent text ---- */
+    .hl { color: var(--steel-light); }
+    .hl-w { color: var(--off-white); font-weight: 600; }
+
+    /* ---- tag / pill ---- */
+    .tag {
+      display: inline-block;
+      font-size: 0.38em;
+      padding: 2px 10px;
+      border-radius: 4px;
+      font-weight: 500;
+      background: var(--bg-card);
+      color: var(--text-2);
+      border: 1px solid var(--border);
+    }
+    .tag--hl { border-color: var(--steel); color: var(--steel-light); }
+
+    /* ---- label above section ---- */
+    .label {
+      display: inline-block;
+      font-size: 0.4em;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--steel);
+      margin-bottom: 8px;
+    }
+
+    /* ---- thin rule ---- */
+    .rule {
+      width: 32px; height: 2px;
+      background: var(--steel);
+      border: none;
+      margin: 0 0 10px 0;
+      opacity: 0.6;
+    }
+
+    /* ---- cards ---- */
+    .g2 { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+    .g3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 10px; }
+
+    .c {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 14px 16px;
+    }
+    .c h4 {
+      font-size: 0.5em;
+      font-weight: 600;
+      margin: 0 0 4px 0;
+      color: var(--off-white);
+    }
+    .c p {
+      font-size: 0.42em !important;
+      margin: 0;
+      color: var(--text-2);
+      line-height: 1.5;
+    }
+    .c .sub {
+      font-size: 0.36em;
+      color: var(--text-3);
+      margin-top: 4px;
+      display: block;
+    }
+    .c--accent { border-left: 2px solid var(--steel); }
+
+    /* ---- block quote style ---- */
+    .bq {
+      border-left: 2px solid var(--steel);
+      padding: 8px 14px;
+      margin: 10px 0;
+      background: rgba(91,122,157,0.06);
+      border-radius: 0 6px 6px 0;
+    }
+    .bq p {
+      font-size: 0.48em !important;
+      color: var(--text-1) !important;
+      font-style: italic;
+      margin: 0;
+    }
+
+    /* ---- objective list ---- */
+    .olist {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      counter-reset: o;
+    }
+    .olist li {
+      counter-increment: o;
+      padding: 7px 0;
+      border-bottom: 1px solid var(--border);
+      display: flex;
+      gap: 10px;
+      align-items: baseline;
+      font-size: 0.46em !important;
+    }
+    .olist li::before {
+      content: counter(o);
+      flex-shrink: 0;
+      width: 20px; height: 20px;
+      border-radius: 50%;
+      background: var(--bg-card);
+      border: 1px solid var(--steel);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.75em;
+      font-weight: 600;
+      color: var(--steel-light);
+    }
+
+    /* ---- general objective box ---- */
+    .go-box {
+      padding: 12px 16px;
+      border-radius: 8px;
+      background: rgba(91,122,157,0.08);
+      border: 1px solid rgba(91,122,157,0.2);
+      margin-bottom: 12px;
+    }
+    .go-box h3 { font-size: 0.52em; color: var(--steel-light); margin: 0 0 4px 0; }
+    .go-box p { font-size: 0.44em !important; color: var(--text-1) !important; margin: 0; }
+
+    /* ---- framework grid ---- */
+    .fw-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 12px 14px;
+    }
+    .fw-card .fw-area {
+      font-size: 0.36em;
+      text-transform: uppercase;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      color: var(--steel);
+      margin-bottom: 4px;
+    }
+    .fw-card h4 { font-size: 0.46em; margin: 0 0 4px 0; }
+    .fw-card p  { font-size: 0.4em !important; margin: 0; }
+
+    /* ---- module cards ---- */
+    .mod-num {
+      font-size: 0.34em;
+      font-family: 'JetBrains Mono', monospace;
+      color: var(--steel);
+      font-weight: 500;
+    }
+
+    /* ---- browser frame ---- */
+    .browser {
+      background: var(--bg-surface);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      overflow: hidden;
+      max-width: 680px;
+      margin: 0 auto;
+    }
+    .browser-bar {
+      background: var(--bg-card);
+      padding: 6px 12px;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      border-bottom: 1px solid var(--border);
+    }
+    .browser-dot {
+      width: 8px; height: 8px;
+      border-radius: 50%;
+    }
+    .browser-dot--r { background: #e5534b; }
+    .browser-dot--y { background: #c69026; }
+    .browser-dot--g { background: #54a352; }
+    .browser-url {
+      flex: 1;
+      text-align: center;
+      font-size: 0.38em;
+      font-family: 'JetBrains Mono', monospace;
+      color: var(--text-3);
+    }
+
+    /* ---- buttons ---- */
+    .btn {
+      display: inline-block;
+      padding: 8px 20px;
+      border-radius: 6px;
+      font-size: 0.46em;
+      font-weight: 600;
+      text-decoration: none !important;
+      transition: background 0.2s;
+    }
+    .btn--p {
+      background: var(--steel);
+      color: var(--bg);
+    }
+    .btn--p:hover { background: var(--steel-light); }
+    .btn--s {
+      background: transparent;
+      border: 1px solid var(--border);
+      color: var(--text-2);
+    }
+    .btn--s:hover { border-color: var(--steel); color: var(--text-1); }
+
+    /* ---- conclusion items ---- */
+    .conc {
+      text-align: center;
+      padding: 12px 10px;
+      border-radius: 8px;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+    }
+    .conc h4 { font-size: 0.44em; margin: 4px 0 2px 0; }
+    .conc p  { font-size: 0.38em !important; margin: 0; }
+
+    /* ---- title slide ---- */
+    .ts { text-align: center !important; }
+    .ts h1 { font-size: 2.3em; }
+    .ts .ts-sub {
+      font-size: 0.54em;
+      color: var(--text-2);
+      font-weight: 400;
+      margin-top: 4px;
+    }
+    .team {
+      display: flex;
+      justify-content: center;
+      gap: 28px;
+      margin-top: 18px;
+      flex-wrap: wrap;
+    }
+    .team-member {
+      text-align: center;
+    }
+    .team-av {
+      width: 36px; height: 36px;
+      border-radius: 50%;
+      background: var(--bg-card);
+      border: 1.5px solid var(--steel);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 0.42em;
+      color: var(--steel-light);
+      margin: 0 auto 4px;
+    }
+    .team-name {
+      font-size: 0.42em;
+      color: var(--text-1);
+      font-weight: 500;
+    }
+    .subjects {
+      display: flex;
+      justify-content: center;
+      gap: 6px;
+      flex-wrap: wrap;
+      margin-top: 14px;
+    }
+    .institution {
+      font-size: 0.4em;
+      color: var(--text-3);
+      margin-top: 14px;
+      text-align: center;
+    }
+
+    /* ---- layout ---- */
+    .row { display: flex; gap: 10px; }
+    .col { flex: 1; display: flex; flex-direction: column; gap: 10px; }
+    .mt { margin-top: 10px; }
+    .center { text-align: center !important; }
+
+    /* ---- fragments ---- */
+    .reveal .slides section .fragment {
+      transition: all 0.35s ease;
+    }
+
+    /* ---- slide number ---- */
+    .reveal .slide-number {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.5em;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 2px 8px;
+      color: var(--text-3);
+    }
+
+    /* ---- progress ---- */
+    .reveal .progress span { background: var(--steel); }
+
+    /* ---- controls ---- */
+    .reveal .controls .navigate-left,
+    .reveal .controls .navigate-right,
+    .reveal .controls .navigate-up,
+    .reveal .controls .navigate-down { color: var(--steel); }
+
+    @media (max-width: 768px) {
+      .g2, .g3 { grid-template-columns: 1fr; }
+      .row { flex-direction: column; }
+      .ts h1 { font-size: 1.6em; }
+    }
+  </style>
+</head>
+<body>
+<div class="reveal">
+<div class="slides">
+
+  <!-- ========== SLIDE 1: TITLE ========== -->
+  <section class="ts">
+    <span class="label">Interdisciplinary Project · 2026</span>
+    <h1>Beyond the Wall</h1>
+    <p class="ts-sub">Urban Canvas & Court Hub</p>
+    <p style="font-size:0.44em; color:var(--text-3); margin-top:2px;">
+      An Interdisciplinary Digital Platform for Youth Empowerment,<br>
+      Tactical Analysis, Socio-Emotional Resilience &amp; Solidary Service
+    </p>
+
+    <div class="team fragment fade-up">
+      <div class="team-member">
+        <div class="team-av">MF</div>
+        <span class="team-name">Martín Forero López</span>
+      </div>
+      <div class="team-member">
+        <div class="team-av">JC</div>
+        <span class="team-name">Juan Camilo Caina Gallego</span>
+      </div>
+      <div class="team-member">
+        <div class="team-av">TH</div>
+        <span class="team-name">Tomás Homez</span>
+      </div>
+    </div>
+
+    <div class="subjects fragment fade-up">
+      <span class="tag tag--hl">English</span>
+      <span class="tag">Visual Arts</span>
+      <span class="tag">Physical Education</span>
+      <span class="tag">Socio-Emotional Dev.</span>
+      <span class="tag">ERE</span>
+    </div>
+
+    <p class="institution fragment fade-up">
+      Corporación Colegio San Bonifacio de las Lanzas Bilingüe · Grado 10B · Ibagué, Tolima
+    </p>
+  </section>
+
+  <!-- ========== SLIDE 2: PROBLEM STATEMENT ========== -->
+  <section>
+    <hr class="rule">
+    <span class="label">Slide 02</span>
+    <h2>Problem Statement &amp; Context</h2>
+
+    <div class="g2 mt">
+      <div class="c c--accent fragment fade-up">
+        <h4>Social friction in vulnerable neighborhoods</h4>
+        <p>Communities in Ibagué face fragmentation — lack of safe youth spaces, limited mental health support, unresolved social tensions between neighbors.</p>
+      </div>
+      <div class="c c--accent fragment fade-up">
+        <h4>Stigmatization of urban art</h4>
+        <p>Graffiti is dismissed as vandalism, erasing its role as collective memory, cultural identity, and a form of social resistance in marginalized communities.</p>
+      </div>
+      <div class="c c--accent fragment fade-up">
+        <h4>Conflict on neighborhood courts</h4>
+        <p>Local sports fields become sites of aggression. Unregulated competition fuels disputes rather than building cooperation or leadership skills.</p>
+      </div>
+      <div class="c c--accent fragment fade-up">
+        <h4>Emotional &amp; mental health gaps</h4>
+        <p>Youth lack accessible tools for emotional regulation, stress management, and constructive conflict resolution in their daily environments.</p>
+      </div>
+    </div>
+
+    <div class="bq fragment fade-up mt">
+      <p>"Unifying urban art, tactical strategy, and emotional self-regulation transforms neighborhood courts into spaces of youth leadership."</p>
+    </div>
+  </section>
+
+  <!-- ========== SLIDE 3: JUSTIFICATION ========== -->
+  <section>
+    <hr class="rule">
+    <span class="label">Slide 03</span>
+    <h2>Justification &amp; Interdisciplinary Integration</h2>
+
+    <div class="row mt">
+      <div class="col">
+        <div class="c c--accent fragment fade-up">
+          <h4>Why integrate five subjects?</h4>
+          <p>Art, sport, and emotions don't happen in isolation in young people's lives. A holistic approach mirrors real-world complexity and produces deeper learning.</p>
+        </div>
+        <div class="c c--accent fragment fade-up">
+          <h4>CLIL methodology</h4>
+          <p>Content and Language Integrated Learning — students develop English proficiency while engaging with authentic content across all five disciplines.</p>
+        </div>
+      </div>
+      <div class="col">
+        <div class="c c--accent fragment fade-up">
+          <h4>Interactive simulators</h4>
+          <p>Digital tools let learners practice decision-making under pressure — tactical plays, emotional regulation, community conflict — in a safe environment.</p>
+        </div>
+        <div class="c c--accent fragment fade-up">
+          <h4>Service-learning bridge</h4>
+          <p>The project connects academic knowledge with real community impact: fair-play tournaments, collaborative murals, and restorative dialogue circles.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== SLIDE 4: OBJECTIVES ========== -->
+  <section>
+    <hr class="rule">
+    <span class="label">Slide 04</span>
+    <h2>Project Objectives</h2>
+
+    <div class="go-box fragment fade-up">
+      <h3>General Objective</h3>
+      <p>Build an interactive web platform integrating urban art analysis, tactical sports strategy, emotional self-regulation, and servant leadership to empower youth as agents of community transformation.</p>
+    </div>
+
+    <h3 class="fragment fade-up" style="margin-bottom:6px;">Specific Objectives</h3>
+
+    <ol class="olist">
+      <li class="fragment fade-up">Analyze urban art as a vehicle for <span class="hl-w">collective memory and identity</span>, decoding murals through semiotic and socio-historical lenses.</li>
+      <li class="fragment fade-up">Evaluate tactical sports decisions under competitive pressure using <span class="hl-w">interactive video breakdowns and spatial diagrams</span>.</li>
+      <li class="fragment fade-up">Develop a <span class="hl-w">digital self-regulation simulator</span> for practicing box breathing, grounding, and conflict de-escalation during match scenarios.</li>
+      <li class="fragment fade-up">Design a <span class="hl-w">servant leadership playbook</span> to organize fair-play tournaments, community murals, and restorative dialogue circles.</li>
+    </ol>
+  </section>
+
+  <!-- ========== SLIDE 5: THEORETICAL FRAMEWORK ========== -->
+  <section>
+    <hr class="rule">
+    <span class="label">Slide 05</span>
+    <h2>Theoretical Framework</h2>
+    <p style="font-size:0.44em; margin-bottom:8px;">Key authors grounding each module.</p>
+
+    <div class="g2">
+      <div class="fw-card fragment fade-up">
+        <div class="fw-area">Visual Culture &amp; Semiotics</div>
+        <h4>Baudrillard (1993) · Awad (2020)</h4>
+        <p>Urban art as symbolic space of resistance — graffiti as semiotic practice reclaiming public narrative and encoding collective identity.</p>
+      </div>
+      <div class="fw-card fragment fade-up">
+        <div class="fw-area">Tactical Performance</div>
+        <h4>Garganta (2009) · Holt et al. (2017)</h4>
+        <p>Decision-making under competitive stress — spatial awareness, temporal pressure, and group dynamics shaping tactical intelligence.</p>
+      </div>
+      <div class="fw-card fragment fade-up">
+        <div class="fw-area">Emotion Regulation</div>
+        <h4>Gross (2015) · Smith et al. (2021)</h4>
+        <p>Process model of emotion regulation and digital simulation — cognitive reappraisal and grounding techniques practiced interactively.</p>
+      </div>
+      <div class="fw-card fragment fade-up">
+        <div class="fw-area">Servant Leadership &amp; CLIL</div>
+        <h4>Greenleaf (2002) · Coyle (2010)</h4>
+        <p>Leadership rooted in human dignity and community service, combined with CLIL for bilingual competence through authentic engagement.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== SLIDE 6: PLATFORM MODULES ========== -->
+  <section>
+    <hr class="rule">
+    <span class="label">Slide 06</span>
+    <h2>Platform Modules</h2>
+    <p style="font-size:0.44em; margin-bottom:8px;">Four interconnected modules powering the experience.</p>
+
+    <div class="g2">
+      <div class="c c--accent fragment fade-up">
+        <span class="mod-num">01</span>
+        <h4>The Urban Canvas</h4>
+        <p>Interactive gallery with socio-historical critique of street art, stencils, and community murals. Users decode symbolism through guided visual analysis.</p>
+        <span class="sub">Visual Arts · English</span>
+      </div>
+      <div class="c c--accent fragment fade-up">
+        <span class="mod-num">02</span>
+        <h4>Tactical Breakdown</h4>
+        <p>Video analysis and spatial play diagrams for real match scenarios. Users evaluate decisions, identify patterns, and explore field simulations.</p>
+        <span class="sub">Physical Education · English</span>
+      </div>
+      <div class="c c--accent fragment fade-up">
+        <span class="mod-num">03</span>
+        <h4>Self-Regulation &amp; Match Simulator</h4>
+        <p>Glossary of regulation techniques (box breathing, grounding, reappraisal) plus a conflict simulator in match contexts.</p>
+        <span class="sub">Socio-Emotional Development · English</span>
+      </div>
+      <div class="c c--accent fragment fade-up">
+        <span class="mod-num">04</span>
+        <h4>Servant Leadership Playbook</h4>
+        <p>Action guide for organizing fair-play tournaments, collaborative murals, and restorative dialogue circles in the community.</p>
+        <span class="sub">ERE · Socio-Emotional Development</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========== SLIDE 7: DEMO & CONCLUSION ========== -->
+  <section class="center">
+    <hr class="rule" style="margin: 0 auto 10px auto;">
+    <span class="label">Slide 07</span>
+    <h2 style="text-align:center;">Live Demo &amp; Conclusions</h2>
+
+    <div class="browser fragment fade-up mt">
+      <div class="browser-bar">
+        <span class="browser-dot browser-dot--r"></span>
+        <span class="browser-dot browser-dot--y"></span>
+        <span class="browser-dot browser-dot--g"></span>
+        <span class="browser-url">mfgatos3.github.io/urban-canvas/</span>
+      </div>
+      <iframe src="https://mfgatos3.github.io/urban-canvas/" width="100%" height="300" style="border:none; background:var(--bg);" loading="lazy" title="Urban Canvas Live Preview"></iframe>
+    </div>
+
+    <div class="fragment fade-up mt" style="display:flex; justify-content:center; gap:10px;">
+      <a href="https://mfgatos3.github.io/urban-canvas/" target="_blank" class="btn btn--p">Open Platform</a>
+      <a href="https://mfgatos3.github.io/urban-canvas/#gallery" target="_blank" class="btn btn--s">Gallery</a>
+      <a href="https://mfgatos3.github.io/urban-canvas/#simulator" target="_blank" class="btn btn--s">Simulator</a>
+    </div>
+
+    <div class="g3 fragment fade-up" style="margin-top:16px;">
+      <div class="conc">
+        <h4 class="hl">Socio-emotional impact</h4>
+        <p>Digital simulators make emotional regulation accessible, giving youth practical tools for real-life conflict.</p>
+      </div>
+      <div class="conc">
+        <h4 class="hl">Transformative leadership</h4>
+        <p>Servant leadership playbooks turn students into community organizers — classroom theory to neighborhood action.</p>
+      </div>
+      <div class="conc">
+        <h4 class="hl">Conflict resolution</h4>
+        <p>Integrating art, sport, and dialogue creates safer public spaces — courts become sites of unity.</p>
+      </div>
+    </div>
+
+    <p class="fragment fade-up" style="text-align:center; font-size:0.38em; margin-top:16px; color:var(--text-3);">
+      Docente: Nicolás José Barreto Perdomo · Corporación Colegio San Bonifacio de las Lanzas Bilingüe · Ibagué, Tolima — 2026
+    </p>
+  </section>
+
+</div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/reveal.js@5.1.0/dist/reveal.js"></script>
+<script>
+  Reveal.initialize({
+    hash: true,
+    slideNumber: 'c/t',
+    transition: 'slide',
+    transitionSpeed: 'default',
+    backgroundTransition: 'fade',
+    center: true,
+    width: 1280,
+    height: 720,
+    margin: 0.06,
+    controls: true,
+    progress: true,
+    fragments: true,
+    plugins: []
+  });
+</script>
+</body>
+</html>
